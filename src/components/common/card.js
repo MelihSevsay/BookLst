@@ -8,6 +8,12 @@ const Card = props => {
 const styles = StyleSheet.create({
   cardWrapper: {
     height: 100,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderColor: '#97bd00',
+    borderWidth: 1,
+    padding: 5,
+    margin: 5,
   },
 });
 
