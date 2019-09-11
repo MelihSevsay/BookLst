@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import {View, FlatList} from 'react-native';
 import {connect} from 'react-redux';
-import {CPN_bookItem} from './CPN_bookItem';
-import * as actions from '../actions';
+import CPN_bookItem from './CPN_bookItem';
 
 class CPN_bookList extends Component {
   renderItem({item}) {
@@ -11,7 +10,6 @@ class CPN_bookList extends Component {
 
   render() {
     const {books} = this.props;
-    console.log(this.props);
     return (
       <View>
         <FlatList
@@ -27,11 +25,7 @@ class CPN_bookList extends Component {
 const mapStateToProps = state => {
   return {
     books: state.books,
-    selectedBook: state.selectedBook,
   };
 };
 
-export default connect(
-  mapStateToProps,
-  actions,
-)(CPN_bookList);
+export default connect(mapStateToProps)(CPN_bookList);

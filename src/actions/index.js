@@ -1,4 +1,7 @@
+import {myDebugger} from '../components/common';
+
 export const selectBook = book => {
+  myDebugger('Action=>', book);
   return {
     type: 'select_book',
     payload: book,

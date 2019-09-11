@@ -1,15 +1,21 @@
 import React, {Component} from 'react';
 import {Text, StyleSheet, TouchableOpacity} from 'react-native';
-import {Card} from './common';
+import {Card, myDebugger} from './common';
 import {connect} from 'react-redux';
 import * as actions from '../actions';
 
 class CPN_bookItem extends Component {
+  onPressed() {
+    const {book} = this.props;
+    this.props.selectBook(book);
+  }
+
   render() {
     const {book} = this.props;
+    myDebugger('Book =>', book);
     console.log(this.props);
     return (
-      <TouchableOpacity onPress={() => {}}>
+      <TouchableOpacity onPress={() => this.onPressed()}>
         <Card>
           <Text style={styles.tityeStyle}>{book.title}</Text>
           <Text style={styles.authourStyle}>{book.author}</Text>
@@ -31,8 +37,17 @@ const styles = StyleSheet.create({
   },
 });
 
-export {CPN_bookItem};
-// export default connect(
-//   mapStateToProps,
-//   actions,
-// )(CPN_bookItem);
+const mapStateToProps = (state, props) => {
+  //console.log(state);
+  //console.log(props);
+  const selected =
+    state.selectedBook && state.selectedBook.isbn === props.book.isbn;
+  return {
+    selected,
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  actions,
+)(CPN_bookItem);
