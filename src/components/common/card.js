@@ -7,7 +7,7 @@ const Card = props => {
 
 const styles = StyleSheet.create({
   cardWrapper: {
-    height: 100,
+    height: 50,
     justifyContent: 'center',
     alignItems: 'center',
     borderColor: '#97bd00',

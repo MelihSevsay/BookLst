@@ -6,12 +6,18 @@ import * as actions from '../actions';
 
 class CPN_bookItem extends Component {
   onPressed() {
-    const {book} = this.props;
-    this.props.selectBook(book);
+    const {book, selected} = this.props;
+
+    selected ? this.props.deselectBook() : this.props.selectBook(book);
   }
 
   render() {
-    const {book} = this.props;
+    const {book, selected} = this.props;
+
+    const description = selected ? (
+      <Text style={styles.descriptionStyle}>{book.description}</Text>
+    ) : null;
+
     myDebugger('Book =>', book);
     console.log(this.props);
     return (
@@ -20,6 +26,7 @@ class CPN_bookItem extends Component {
           <Text style={styles.tityeStyle}>{book.title}</Text>
           <Text style={styles.authourStyle}>{book.author}</Text>
         </Card>
+        {description}
       </TouchableOpacity>
     );
   }
@@ -34,6 +41,12 @@ const styles = StyleSheet.create({
   authourStyle: {
     fontSize: 14,
     color: '#bd0000',
+  },
+  descriptionStyle: {
+    paddingLeft: 10,
+    paddingRight: 10,
+    fontSize: 13,
+    color: 'gray',
   },
 });
 

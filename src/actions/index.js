@@ -1,16 +1,17 @@
 import {myDebugger} from '../components/common';
+import {SELECT_BOOK, DESELECT_BOOK} from '../contracts/globalDefaults';
 
 export const selectBook = book => {
   myDebugger('Action=>', book);
   return {
-    type: 'select_book',
+    type: SELECT_BOOK,
     payload: book,
   };
 };
 
 export const deselectBook = () => {
   return {
-    type: 'deselect_book',
+    type: DESELECT_BOOK,
     payload: {},
   };
 };
